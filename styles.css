@@ -1,0 +1,69 @@
+.container {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+  
+  
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  .user-info-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  input,
+  select {
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    align-items: center;
+  }
+
+  fieldset {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  fieldset label {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 20px;
+  }
+  
+  fieldset input[type="radio"] {
+    display: inline-block;
+    margin-right: 5px;
+  }
+  
