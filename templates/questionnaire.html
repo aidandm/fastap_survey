@@ -10,15 +10,11 @@
         Questionnaire MIS498
     </title>
     <link rel="stylesheet" type="text/css" href="/static/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/static/index.css" />
 </head> 
 <header>
     <div class="header">
-        <p>Survey Website</p>
-        <ul class="header-items">
-            <li><a href="/questionnaire">Take Assessment</a></li>
-            <li><a href="/about">Learn About You!</a></li>
-            <li><a href="/login">Log In</a></li>
-        </ul>
+        <p>Welcome to...</p>
     </div>
 </header> 
 <body>
@@ -253,6 +249,9 @@
                     <option value="Masters-Degree">Masters Degree</option>
                     <option value="PhD">PhD</option>
                 </select>
+
+                <label for="email" id="email-input"></label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
 
                 <button type="submit" value="end">
                     Submit Survey
