@@ -10,8 +10,13 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 @app.get("/")
+async def show_home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
+@app.get("/questionnaire")
 async def show_questionnaire(request: Request):
     return templates.TemplateResponse("questionnaire.html", {"request": request})
+
 
 @app.post("/submit-form")
 async def submit_form(request: Request):

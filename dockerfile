@@ -1,13 +1,14 @@
 FROM python:3.11-slim-buster
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /fastap_sqlite_survey
 
 # Copy the application code to the container
-COPY fastap_sqlite_survey /app
+COPY * /fastap_sqlite_survey/
 
 # Install any necessary dependencies
-RUN pip install -r /app/requirements.txt
+RUN pip install --upgrade pip  
+RUN pip install -r \requirements.txt
 
 # Expose the port
 EXPOSE 8000

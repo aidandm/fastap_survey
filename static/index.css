@@ -1,0 +1,40 @@
+header {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .header p {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+  }
+  
+  .header-items {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+  }
+  
+  .header-items li {
+    margin-right: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .header-items li:hover {
+    color: #f1c40f;
+  }
+  
+  
