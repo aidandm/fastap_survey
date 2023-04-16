@@ -17,6 +17,9 @@ async def show_home(request: Request):
 async def show_questionnaire(request: Request):
     return templates.TemplateResponse("questionnaire.html", {"request": request})
 
+@app.get("/login")
+async def show_login(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
 
 @app.post("/submit-form")
 async def submit_form(request: Request):
@@ -50,30 +53,30 @@ async def submit_form(request: Request):
     gender = form_data["gender"]
     occupation = form_data["occupation"]
     education = form_data["education"]
+    email = form_data["email"]
 
     # Connect to the database
     conn = psycopg2.connect(
-        host="localhost",
-        database="postgres",
+        host='mis-database.cevtznumxb4e.us-west-1.rds.amazonaws.com',
+        port='5432',
+        database='mis-database',
         user="postgres",
-        password="Apple0rangeBanana^$"
+        password="password123"
     )
 
     # Insert the form data into the database
     with conn.cursor() as cur:
         cur.execute(
-            "INSERT INTO response (q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16, q17, q18, q19) "
+            "INSERT INTO survey_response (q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16, q17, q18, q19) "
             "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
             (q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16, q17, q18, q19)
         )
         cur.execute(
-            "INSERT INTO users (name, age, gender, occupation, education) "
+            "INSERT INTO users (name, age, gender, occupation, education, email) "
             "VALUES (%s, %s, %s, %s, %s)",
-            (name, age, gender, occupation, education)
+            (name, age, gender, occupation, education, email)
         )
         conn.commit()
 
     # Return a response indicating success
     return templates.TemplateResponse("success.html", {"request": request})
-
-

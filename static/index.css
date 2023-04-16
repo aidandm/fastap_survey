@@ -1,40 +1,47 @@
-header {
-    background-color: #333;
-    color: #fff;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-  }
-  
-  .header p {
-    font-size: 28px;
-    font-weight: bold;
-    margin: 0;
-    text-align: center;
-  }
-  
-  .header-items {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: flex-end;
-    text-align: right;
-  }
-  
-  .header-items li {
-    margin-right: 20px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .header-items li:hover {
-    color: #f1c40f;
-  }
-  
-  
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header styles */
+.header {
+  background-color: #0074D9; /* Blue background */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.header p {
+  color: #ffffff; /* White color for the company name */
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Header items (list) styles */
+.header-items {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+
+.header-items li {
+  margin-left: 1rem;
+}
+
+.header-items a {
+  text-decoration: none;
+  color: #ffffff; /* White color for the link */
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* Hover effect for the login link */
+.header-items a:hover {
+  background-color: #ffffff; /* White background when hovering */
+  color: #0074D9; /* Blue color for the text when hovering */
+  transition: 0.3s;
+}
