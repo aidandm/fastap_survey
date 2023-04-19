@@ -13,6 +13,8 @@ from fastapi import FastAPI, Depends, Request, Form
 from pydantic import BaseModel
 from fastapi.responses import HTMLResponse
 from fastapi import HTTPException
+from fastapi.security import HTTPBearer
+from fastapi.security.http import HTTPAuthorizationCredentials
 
 app = FastAPI()
 
@@ -108,11 +110,9 @@ async def login(data: OAuth2PasswordRequestForm = Depends()):
     return {'access_token': access_token}
 
 
-@app.get('/protected')
-def protected_route(user=Depends(manager)):
-    return {'user': user}
-
-
+@app.get('/authenticated-route')
+def authenticated_route(user=Depends(manager)):
+    return {"user_email": user["email"]}
 
 
 @app.get("/questionnaire")

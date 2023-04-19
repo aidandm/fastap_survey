@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protected Page</title>
+</head>
+<body>
+    <h1>Protected Page</h1>
+    <div id="protected-data"></div>
+
+    <!-- Add the fetchData function in a script tag -->
+    <script>
+        async function fetchData() {
+            const accessToken = localStorage.getItem("accessToken");
+            if (!accessToken) {
+                // Redirect to the login page if the user is not logged in
+                window.location.href = "/login";
+                return;
+            }
+
+            try {
+                const response = await fetch("/protected", {
+                    headers: {
+                        "Authorization": `Bearer ${accessToken}`,
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error("Invalid token");
+                }
+
+                const data = await response.json();
+                console.log("Protected data:", data);
+
+                // Display the protected data on the page
+                document.getElementById("protected-data").textContent = JSON.stringify(data);
+            } catch (error) {
+                console.error("Error fetching protected data:", error.message);
+            }
+        }
+
+        // Call fetchData() when the protected page loads
+        fetchData();
+    </script>
+</body>
+</html>
