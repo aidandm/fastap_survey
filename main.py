@@ -110,10 +110,6 @@ async def login(data: OAuth2PasswordRequestForm = Depends()):
     return {'access_token': access_token}
 
 
-@app.get('/authenticated-route')
-def authenticated_route(user=Depends(manager)):
-    return {"user_email": user["email"]}
-
 
 @app.get("/questionnaire")
 async def show_questionnaire(request: Request):
