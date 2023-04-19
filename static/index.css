@@ -4,10 +4,6 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 /* Header styles */
 .header {
   background-color: #0074D9; /* Blue background */
@@ -48,56 +44,4 @@ body {
   background-color: #ffffff; /* White background when hovering */
   color: #0074D9; /* Blue color for the text when hovering */
   transition: 0.3s;
-}
-
-.overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10;
-}
-
-.form-popup {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid #ccc;
-  z-index: 20;
-  background-color: #f1f1f1;
-  padding: 20px;
-  width: 300px;
-}
-
-.form-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-container input[type=text],
-.form-container input[type=password] {
-  padding: 10px;
-  margin: 10px 0;
-}
-
-.form-container button {
-  padding: 10px;
-  background-color: #0074D9;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-.form-container button.cancel {
-  background-color: #ccc;
-}
-
-.form-container button:hover {
-  opacity: 0.8;
 }

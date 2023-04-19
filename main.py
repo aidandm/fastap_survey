@@ -1,13 +1,9 @@
 from fastapi import FastAPI, Request
-from fastapi_login import LoginManager
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
-from fastapi.security import OAuth2PasswordRequestForm
-from fastapi_login.exceptions import InvalidCredentialsException
-from fastapi import Depends
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 import psycopg2
+<<<<<<< HEAD
 import bcrypt
 from fastapi import FastAPI, Depends, Request, Form
 from pydantic import BaseModel
@@ -15,26 +11,19 @@ from fastapi.responses import HTMLResponse
 from fastapi import HTTPException
 from fastapi.security import HTTPBearer
 from fastapi.security.http import HTTPAuthorizationCredentials
+=======
+>>>>>>> parent of 663dd5a (Added a working signup and login page)
 
 app = FastAPI()
-
 templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-#Connection to the database
-conn = psycopg2.connect(
-    host='postgres-database-1.ca1nhgbt24ab.us-east-1.rds.amazonaws.com',
-    port='5432',
-    database='postgres',
-    user="postgres",
-    password="Monkey3atBanana^$"
-)
 
-#Below is for the home screen
 @app.get("/")
 async def show_home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
+<<<<<<< HEAD
 #For signing up
 @app.get("/usersignup")
 async def show_home(request: Request):
@@ -111,6 +100,8 @@ async def login(data: OAuth2PasswordRequestForm = Depends()):
 
 
 
+=======
+>>>>>>> parent of 663dd5a (Added a working signup and login page)
 @app.get("/questionnaire")
 async def show_questionnaire(request: Request):
     return templates.TemplateResponse("questionnaire.html", {"request": request})
@@ -152,6 +143,15 @@ async def submit_form(request: Request):
     occupation = form_data["occupation"]
     education = form_data["education"]
     email = form_data["email"]
+
+    # Connect to the database
+    conn = psycopg2.connect(
+        host='mis-database.cevtznumxb4e.us-west-1.rds.amazonaws.com',
+        port='5432',
+        database='mis-database',
+        user="postgres",
+        password="password123"
+    )
 
     # Insert the form data into the database
     with conn.cursor() as cur:
