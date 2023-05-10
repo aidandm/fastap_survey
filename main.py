@@ -3,16 +3,6 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 import psycopg2
-<<<<<<< HEAD
-import bcrypt
-from fastapi import FastAPI, Depends, Request, Form
-from pydantic import BaseModel
-from fastapi.responses import HTMLResponse
-from fastapi import HTTPException
-from fastapi.security import HTTPBearer
-from fastapi.security.http import HTTPAuthorizationCredentials
-=======
->>>>>>> parent of 663dd5a (Added a working signup and login page)
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -23,85 +13,6 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 async def show_home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-<<<<<<< HEAD
-#For signing up
-@app.get("/usersignup")
-async def show_home(request: Request):
-    return templates.TemplateResponse("signup.html", {"request": request})
-
-class UserIn(BaseModel):
-    email: str
-    password: str
-    name: str
-    dob: str
-    gender: str
-
-def create_user(user: UserIn):
-    hashed_password = bcrypt.hashpw(user.password.encode("utf-8"), bcrypt.gensalt())
-
-    with conn.cursor() as cur:
-        cur.execute(
-            "INSERT INTO users (email, password, name, dob, gender) VALUES (%s, %s, %s, %s, %s)",
-            (user.email, hashed_password.decode("utf-8"), user.name, user.dob, user.gender)
-        )
-        conn.commit()
-
-@app.post("/signup")
-def signup(
-    email: str = Form(...),
-    password: str = Form(...),
-    name: str = Form(...),
-    dob: str = Form(...),
-    gender: str = Form(...)
-):
-    user_data = UserIn(email=email, password=password, name=name, dob=dob, gender=gender)
-    create_user(user_data)
-    return {"message": "User created successfully"}
-
-#Login Variables
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
-SECRET = "44506ed6d57f65997ec91b173f2c228fffb91cb2fbc673c6"
-manager = LoginManager(SECRET, '/login')
-
-
-#Below is the section of code for logging in
-def query_user(email: str):
-    with conn.cursor() as cur:
-        cur.execute(
-            "SELECT email, password FROM users WHERE email = %s",
-            (email,)
-        )
-        result = cur.fetchone()
-        conn.commit()
-
-    if result:
-        email, hashed_password = result
-        return {"email": email, "password": hashed_password}
-    else:
-        return None
-
-@app.post('/login')
-async def login(data: OAuth2PasswordRequestForm = Depends()):
-    email = data.username
-    password = data.password.encode("utf-8")
-
-    user = query_user(email)
-    if not user:
-        raise HTTPException(status_code=401, detail="Invalid credentials")
-    
-    stored_hashed_password = user['password'].encode("utf-8")
-    if not bcrypt.checkpw(password, stored_hashed_password):
-        raise HTTPException(status_code=401, detail="Invalid credentials")
-
-    access_token = manager.create_access_token(
-        data={'sub': email}
-    )
-    return {'access_token': access_token}
-
-
-
-=======
->>>>>>> parent of 663dd5a (Added a working signup and login page)
 @app.get("/questionnaire")
 async def show_questionnaire(request: Request):
     return templates.TemplateResponse("questionnaire.html", {"request": request})

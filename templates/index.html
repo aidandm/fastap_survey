@@ -18,43 +18,7 @@
             <li><a href="/login">Login</a></li>
         </ul>
     </div>
-<<<<<<< HEAD
-    <div class="overlay" id="overlay"></div>
-    <div class="form-popup" id="login-form">
-        <form action="/login" method="post" class="form-container">
-            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
-            <h1>Login</h1>
-        
-            <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="username" required>
-        
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
-        
-        
-            <button type="submit" class="btn">Login</button>
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-        </form>  
-        <form action="/usersignup" method="get">
-            <p>Not a user? <button>Signup!</button></p>
-        </form>      
-        
-    </div>
-    <script>
-        function openForm() {
-        document.getElementById("myForm").style.display = "block";
-        document.getElementById("overlay").style.display = "block";
-        }
-
-        function closeForm() {
-        document.getElementById("myForm").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
-        } 
-    </script> 
-</header>
-=======
 </header> 
->>>>>>> parent of 663dd5a (Added a working signup and login page)
 <body>
     <h1>Find out more about you!</h1>
     <p>
