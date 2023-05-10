@@ -112,9 +112,6 @@ async def login(data: OAuth2PasswordRequestForm = Depends()):
 def protected_route(user=Depends(manager)):
     return {'user': user}
 
-
-
-
 @app.get("/questionnaire")
 async def show_questionnaire(request: Request):
     return templates.TemplateResponse("questionnaire.html", {"request": request})
