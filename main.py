@@ -25,7 +25,7 @@ conn = psycopg2.connect(
     port='5432',
     database='postgres',
     user="postgres",
-    password="Monkey3atBanana^$"
+    password="password123"
 )
 
 #Below is for the home screen
